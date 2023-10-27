@@ -135,9 +135,18 @@ class TestsService extends Component
             return;
         }
 
-        $this->client = Craft::createGuzzleClient([
+        $guzzleOptions = [
             'timeout' => 10,
-        ]);
+        ];
+
+        $configuredGuzzleOptions = Craft::$app->getConfig()->getGeneral()->sherlockGuzzleOptions;
+        if ($configuredGuzzleOptions && is_array($configuredGuzzleOptions)) {
+            $guzzleOptions = array_merge($guzzleOptions, $configuredGuzzleOptions);
+        }
+
+        $this->client = Craft::createGuzzleClient(
+            $guzzleOptions
+        );
 
         // Get updates, forcing a refresh
         $this->updates = Craft::$app->getUpdates()->getUpdates(true);

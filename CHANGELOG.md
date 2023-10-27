@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.2.0 - 2023-10-27
+### Changed
+- Forked so we can add required features to C3 version of this plugin
+- Added Guzzle options so we can scan staging
+
 ## 3.1.7 - 2022-12-22
 ### Changed
 - The front-end HTTPS redirect test no longer results in an error if the web server blocks insecure requests.
